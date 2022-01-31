@@ -1,4 +1,4 @@
-# qlib -- Abstraction for C
+* qlib -- Abstraction for C
 
 qlib is like glib but it is well done. It provides (sane) abstraction
 for C so you can write programs in C faster. The thing is optimized
