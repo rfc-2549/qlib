@@ -5,7 +5,7 @@
 void
 shuffle(void *base, size_t len, size_t nmemb)
 {
-	char *tmp[len];
+	char *tmp = malloc(len*nmemb);
 	char *arr = base;
 	int stride = nmemb * sizeof(char);
 
@@ -17,7 +17,7 @@ shuffle(void *base, size_t len, size_t nmemb)
 			memcpy(arr + i * stride, tmp, nmemb);
 		}
 	}
-	// free(tmp);
+	free(tmp);
 }
 
 #ifdef testing
