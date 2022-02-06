@@ -31,7 +31,7 @@ qlog(int level, char *fmt, ...)
 	int pid = getpid();
 
 	char *level_str = NULL;
-	/* I know what a hash map is */
+	/* Don't be telling me about hashish, I'm the hash fucking master */
 	switch(level) {
 		case 0:
 			level_str = "DEBUG";
@@ -73,7 +73,7 @@ main(void)
 	qlog(WARNING, "This is warning");
 	qlog(CRIT, "This is crit");
 	qlog(ALERT, "This is an alert");
-	
+
 	return 0;
 }
 #endif /* testing */
