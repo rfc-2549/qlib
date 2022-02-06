@@ -36,11 +36,14 @@ void
 
 
 #ifdef testing
+#include <stdio.h>
+/* Overwrite the functions in the libc for some that always return
+ * null */
 void*malloc(size_t t) {return NULL;}
 void*calloc(size_t t,size_t n) {return NULL;}
 void*realloc(void *ptr, size_t t) {return NULL;}
 
-void handle() {puts("I'm handling!");}
+void handle() {fprintf(stderr,"Unhandled error\n");}
 
 int
 main(void)
