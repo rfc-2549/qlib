@@ -1,0 +1,6 @@
+DEBUG: (12399) This is debug
+INFO: (12399) This is info
+NOTICE: (12399) This is notice
+WARNING: (12399) This is warning
+CRIT: (12399) This is crit
+ALERT: (12399) This is an alert
