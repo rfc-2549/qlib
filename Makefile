@@ -11,10 +11,10 @@ clean:
 	$(RM) obj/*.o *.a src/a.out
 
 qlib.a: obj/fdprintf.o obj/xmalloc.o obj/shuffle.o obj/logger.o obj/colors.o
-	@mkdir -p obj/
 	ar rsc qlib.a obj/fdprintf.o obj/xmalloc.o obj/shuffle.o obj/logger.o
 
 obj/fdprintf.o: src/fdprintf.c
+	@mkdir -p obj
 	$(CC) $(CFLAGS) -c -o $@  $<
 obj/xmalloc.o:  src/xmalloc.c
 	$(CC) $(CFLAGS) -c -o $@  $<
