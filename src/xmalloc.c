@@ -8,8 +8,9 @@ void
 	if(ptr == NULL) {
 		handle();
 		return NULL;
-	} else
+	} else {
 		return ptr;
+	}
 }
 
 void
@@ -19,8 +20,9 @@ void
 	if(ptr == NULL) {
 		handle();
 		return NULL;
-	} else
+	} else {
 		return ptr;
+	}
 }
 
 void
@@ -30,8 +32,9 @@ void
 	if(ptr_r == NULL) {
 		handle();
 		return NULL;
-	} else
+	} else {
 		return ptr_r;
+	}
 }
 
 

@@ -1,7 +1,8 @@
-/* Array shuffler */
+/* Array shuffler,*/
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 void
 shuffle(void *base, size_t len, size_t nmemb)
 {
