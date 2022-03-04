@@ -1,18 +1,26 @@
 CC=cc
 CFLAGS= -Wall -g -O -fPIC -pedantic -I"inc/"
 RM= rm -f
+OBJ = obj/fdprintf.o obj/xmalloc.o obj/shuffle.o obj/logger.o obj/colors.o
+
 .PHONY: all clean
 
 all: qlib.a
 
 clean:
-	$(RM) src/*.o *.a src/a.out
+	$(RM) obj/*.o *.a src/a.out
 
-qlib.a: fdprintf.o xmalloc.o shuffle.o logger.o colors.o
-	ar rsc qlib.a src/fdprintf.o src/xmalloc.o src/shuffle.o src/logger/logger.o
+qlib.a: obj/fdprintf.o obj/xmalloc.o obj/shuffle.o obj/logger.o obj/colors.o
+	@mkdir -p obj/
+	ar rsc qlib.a obj/fdprintf.o obj/xmalloc.o obj/shuffle.o obj/logger.o
 
-fdprintf.o: src/fdprintf.o
-xmalloc.o:  src/xmalloc.o
-shuffle.o: src/shuffle.o
-logger.o: src/logger/logger.o
-colors.o: src/colors.o
+obj/fdprintf.o: src/fdprintf.c
+	$(CC) $(CFLAGS) -c -o $@  $<
+obj/xmalloc.o:  src/xmalloc.c
+	$(CC) $(CFLAGS) -c -o $@  $<
+obj/shuffle.o:  src/shuffle.c
+	$(CC) $(CFLAGS) -c -o $@  $<
+obj/logger.o:   src/logger/logger.c
+	$(CC) $(CFLAGS) -c -o $@  $<
+obj/colors.o:   src/colors.c
+	$(CC) $(CFLAGS) -c -o $@  $<
