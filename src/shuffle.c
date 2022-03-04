@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include <qlib/shuffle.h>
+
 void
 shuffle(void *base, size_t len, size_t nmemb)
 {

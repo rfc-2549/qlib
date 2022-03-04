@@ -1,6 +1,8 @@
 /* Allocators that handle errors */
 #include <stdlib.h>
 
+#include <qlib/xmalloc.h>
+
 void
 *xmalloc(size_t size, void(handle)())
 {

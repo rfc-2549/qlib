@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "logger.h"
+#include <qlib/logger.h>
 
 /* More secure than Log4j! */
 

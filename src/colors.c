@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "qlib/colors.h"
+#include <qlib/colors.h>
 
 void
 set_color(int color)

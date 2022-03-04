@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#include <qlib/fdprintf.h>
+
 int
 vfdprintf(int fd, const char *fmt, va_list ap)
 {
