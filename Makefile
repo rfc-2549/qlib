@@ -24,3 +24,5 @@ obj/logger.o:   src/logger/logger.c
 	$(CC) $(CFLAGS) -c -o $@  $<
 obj/colors.o:   src/colors.c
 	$(CC) $(CFLAGS) -c -o $@  $<
+obj/tui.o:	src/tui.c
+	$(CC) $(CFLAGS) -c -o $@ $<
