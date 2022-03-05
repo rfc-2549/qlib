@@ -1,7 +1,7 @@
 CC=cc
 CFLAGS= -Wall -g -O -fPIC -pedantic -I"inc/"
 RM= rm -f
-OBJ = obj/fdprintf.o obj/xmalloc.o obj/shuffle.o obj/logger.o obj/colors.o
+OBJ = obj/fdprintf.o obj/xmalloc.o obj/shuffle.o obj/logger.o obj/colors.o obj/tui.o
 
 .PHONY: all clean
 
