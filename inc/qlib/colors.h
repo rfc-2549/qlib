@@ -14,8 +14,7 @@
 #define BLUE_BG 44
 #define RESET_BG 48
 
-
-
+#define RESET_STR "\033[48m";
 
 /* Sets the terminal color to something, like ncurses shit */
 

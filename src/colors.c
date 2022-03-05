@@ -8,6 +8,15 @@ set_color(int color)
 	printf(PREFIX_FMT, color);
 }
 
+/* Not thread-safe, if you have 2 threads (one running printf(), and
+ * thus, with default color, and other running vcprintf() with some
+ * color, if they print at the same time, printf() will use the colors
+ * used by vcprintf().
+ *
+ * To fix this, just use a simple mutex, and the problem will be
+ * fixed, I've tested this.
+*/
+
 int
 vcprintf(int fg, int bg, const char *fmt, va_list ap)
 {
@@ -55,7 +64,7 @@ main(void)
 	set_color(RESET_FG);
 	puts("Should be normal");
 	
-	cprintf(RED_FG,0,"Hello world! %i\n",42);
+	cprintf(RED_FG,0,"Hello world! %i %s\n",42,"spurdo sparde");
 	set_color(RESET_BG);
 	set_color(RESET_FG);
 	
