@@ -36,12 +36,12 @@ main(void)
 	int pid = fork();
 	if(pid == 0) { 		  /* Child */
 		for(int i = 0; i < 1000; i++) {
-			mwprintf(5,0,"%d",i);
+			mwprintf(0,5,"%d",i);
 			usleep(1000);
 		}
 	} else {
 		for(int i = 0; i < 1000; i++) {
-			mwprintf(6,0,"%d",i);
+			mwprintf(0,6,"%d",i);
 			usleep(1000);
 		}
 	}
