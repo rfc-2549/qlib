@@ -54,7 +54,7 @@ get_rand_int128()
 	return num;
 }
 
-#endif  /* __GNUC__ */
+#endif /* __GNUC__ */
 
 #ifdef testing
 
@@ -65,7 +65,7 @@ main(void)
 	printf("%i\n", get_rand_int16());
 	printf("%i\n", get_rand_int32());
 	printf("%li\n", get_rand_int64());
-	 printf("%li\n", get_rand_int128());
+	printf("%li\n", get_rand_int128());
 	return 0;
 }
 #endif /* testing */

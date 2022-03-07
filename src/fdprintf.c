@@ -34,7 +34,7 @@ vfdprintf(int fd, const char *fmt, va_list ap)
 	}
 	free(str);
 	return size;
-} 
+}
 
 int
 fdprintf(int fd, const char *fmt, ...)
@@ -42,7 +42,7 @@ fdprintf(int fd, const char *fmt, ...)
 	va_list args;
 	int size = 0;
 	va_start(args, fmt);
-	size = vfdprintf(fd,fmt,args);
+	size = vfdprintf(fd, fmt, args);
 	va_end(args);
 	return size;
 }
@@ -51,8 +51,8 @@ fdprintf(int fd, const char *fmt, ...)
 int
 main(void)
 {
-	fdprintf(1,"%s %i\n","test", 32); /* STDOUT */
-	fdprintf(2,"%s %i\n","test", 32); /* STDERR */
+	fdprintf(1, "%s %i\n", "test", 32); /* STDOUT */
+	fdprintf(2, "%s %i\n", "test", 32); /* STDERR */
 	return 0;
 }
 #endif
