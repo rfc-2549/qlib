@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <sys/file.h>
+#include <unistd.h>
 
 #include <qlib/colors.h>
 
@@ -30,7 +32,41 @@ vcprintf(int fg, int bg, const char *fmt, va_list ap)
 	va_list args;
 	va_copy(args, ap);
 	int size = vprintf(fmt, args);
+	set_color(RESET_FG);
+	set_color(RESET_BG);
+	return size;
+}
 
+/* Same as vcprintf() but thread safe */
+#include <pthread.h>
+
+int
+vcprintf_r(int fg, int bg, const char *fmt, va_list ap)
+{
+	flockfile(stdout);
+	set_color(fg);
+	if(bg) /* If bg is 0 we don't wanna touch it */
+		set_color(bg);
+	va_list args;
+	va_copy(args, ap);
+	
+	int size = vprintf(fmt, args);
+	
+	
+	set_color(RESET_FG);
+	set_color(RESET_BG);
+	funlockfile(stdout);
+	return size;
+}
+
+/* Same as cprintf() but thread safe */
+
+int
+cprintf_r(int fg, int bg, const char *fmt, ...)
+{
+	va_list args;
+	__builtin_va_start(args, fmt);
+	int size = vcprintf_r(fg, bg, fmt, args);
 	return size;
 }
 
@@ -40,7 +76,7 @@ int
 cprintf(int fg, int bg, const char *fmt, ...)
 {
 	va_list args;
-	va_start(args, fmt);
+	__builtin_va_start(args, fmt);
 	int size = vcprintf(fg, bg, fmt, args);
 	return size;
 }
@@ -73,7 +109,7 @@ main(void)
 	cprintf(RED_FG, 0, "Hello world! %i %s\n", 42, "spurdo sparde");
 	set_color(RESET_BG);
 	set_color(RESET_FG);
-
+	
 	return 0;
 }
 

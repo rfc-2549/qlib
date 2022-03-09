@@ -26,8 +26,18 @@ set_color(int color);
 int
 vcprintf(int fg, int bg, const char *fmt, va_list ap);
 
+/* Same as vcprintf() but thread safe */
+
+int
+vcprintf_r(int fg, int bg, const char *fmt, va_list ap);
+
 /* As printf() but with colors */
 
 int
 cprintf(int fg, int bg, const char *fmt, ...);
+
+/* Same as cprintf() but thread safe */
+
+int
+cprintf_r(int fg, int bg, const char *fmt, ...);
 
