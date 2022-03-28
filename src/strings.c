@@ -5,6 +5,7 @@
 #ifdef ENABLE_GC
 #include <gc/gc.h>
 #endif
+
 /* Concatenates 2 strings, automatically malloc()in' the result
  * string. The return value should be free()'d.*/
 

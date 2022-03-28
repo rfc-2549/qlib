@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
+#include <stdint.h>
 
-#include <qlib/shuffle.h>
-#include <qlib/rand.h>
+#include "../inc/qlib/shuffle.h"
+#include "../inc/qlib/rand.h"
 
 void
 shuffle(void *base, size_t len, size_t nmemb)
@@ -16,8 +17,8 @@ shuffle(void *base, size_t len, size_t nmemb)
 
 	if(len > 1) {
 		for(size_t i = 0; i < len - 1; i++) {
-			unsigned int x = get_rand_uint();
-			unsigned int j = i + x / (RAND_MAX / (len - i) + 1);
+			uint32_t x = (unsigned)get_rand_int32();
+			uint32_t j = i + x / (RAND_MAX / (len - i) + 1);
 			/* Sometimes j can be larger than the length, in this
 			 * case decrement the thing until it's a valid array index.
 			 */
@@ -35,14 +36,12 @@ shuffle(void *base, size_t len, size_t nmemb)
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
 int
 main(void)
 {
 	srand(time(NULL));
 	int x[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };
 	shuffle(x, 8, sizeof(int));
-	puts("-----------");
 	for(int i = 0; i < 8; i++) {
 		printf("%i\n", x[i]);
 	}

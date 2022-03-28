@@ -2,7 +2,7 @@
 #include <sys/file.h>
 #include <unistd.h>
 
-#include <qlib/colors.h>
+#include "../inc/qlib/colors.h"
 
 /* Sets the color to the given color */
 

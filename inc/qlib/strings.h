@@ -3,5 +3,3 @@
 
 char *
 q_strcat(const char *s1, const char *s2);
-
-

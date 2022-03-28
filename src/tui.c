@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <sys/ioctl.h>
 
-#include <qlib/tui.h>
+#include <qlib/colors.h>
 
 /* Sets the cursor position in X = x and Y = y */
 
@@ -10,6 +10,7 @@ gotoxy(int x, int y)
 {
 	/* I hate ANSI scape codes */
 	printf("\033[%d;%dH", y, x);
+	return;
 }
 
 /* Gets terminal size (Rows and columns) */
@@ -17,7 +18,6 @@ gotoxy(int x, int y)
 void
 get_term_size(int *lines, int *columns)
 {
-
 	struct winsize tty;
 	ioctl(0, TIOCGWINSZ, &tty);
 
@@ -52,7 +52,7 @@ mwcprintf(int x, int y, int color, int color2, char *fmt, ...)
 	int size = vcprintf(color, color2, fmt, args);
 	return size;
 }
-
+#ifdef testing
 #include <unistd.h>
 #include <stdio.h>
 int
@@ -76,7 +76,8 @@ main(void)
 
 	mwcprintf(0, 5, RED_FG, BLUE_BG, "%s %i\n", "spurdo spärde", 0);
 	set_color(RESET_FG & RESET_BG);
-	get_term_attr(&x, &y);
+	get_term_size(&x, &y);
 	printf("%d %d\n", x, y);
 	return 0;
 }
+#endif /* testing */

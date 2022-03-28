@@ -40,4 +40,3 @@ cprintf(int fg, int bg, const char *fmt, ...);
 
 int
 cprintf_r(int fg, int bg, const char *fmt, ...);
-
