@@ -15,6 +15,7 @@ install:
 	mkdir -p /usr/include/qlib
 	cp    inc/qlib/*.h /usr/include/qlib/
 	cp    libqlib.a /usr/lib
+	cp    src/queue/queue.h /usr/include/qlib
 
 install-shared: shared
 	cp libqlib.so /usr/lib
