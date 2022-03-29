@@ -26,3 +26,12 @@
 #define LIST_POP(head, entry)                                                  \
 	if((head)->l_head != NULL)                                                \
 	(head)->l_head = (head)->l_head->entry.next
+
+#define LIST_INSERT_TAIL(head, elem, entry)                                    \
+	entry *current_elem = (head)->l_head;						  \
+	entry *to_insert = elem;                                                  \
+	to_insert->entry.next = NULL;                                            \
+	while(current_elem->entry.next != NULL) {                                 \
+		current_elem = current_elem->entry.next;                             \
+	}                                                                         \
+	current_elem->entry.next = to_insert;

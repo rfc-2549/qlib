@@ -2,6 +2,7 @@
 #include <qlib/tui.h>
 #include <qlib/colors.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "queue.h"
 
@@ -29,7 +30,7 @@ main(void)
 	 *
 	 *  In the heap.
 	 */
-	struct list_entry *s1, *s2, *s3, *s4;
+	struct list_entry *s1, *s2, *s3, *s4, *s5;
 	struct list_entry *np;
 
 	s1 = malloc(sizeof(list_entry));
@@ -40,6 +41,8 @@ main(void)
 	s3->value = 1.1;
 	s4 = malloc(sizeof(list_entry));
 	s4->value = 10.1;
+	s5 = malloc(sizeof(list_entry));
+	s5->value = 3123.23;
 
 	LIST_INIT(&head);
 
@@ -47,25 +50,26 @@ main(void)
 	LIST_INSERT_HEAD(&head, s2, list_entry);
 	LIST_INSERT_HEAD(&head, s3, list_entry);
 	LIST_INSERT_HEAD(&head, s4, list_entry);
+	LIST_INSERT_TAIL(&head, s5, list_entry);
 
 	for(np = head.l_head; np != NULL; np = np->list_entry.next) {
 		printf("Value: %f\n", np->value);
 		np->list_entry.next == NULL
 			? puts("Last element")
-			: printf("Address: %p\n", np->list_entry.next);
+			: printf("Address: 0x%lX\n", (intptr_t)np->list_entry.next);
 	}
 	/* Free the thing before popping */
+	LIST_POP(&head, list_entry);
 	free(s4);
+	LIST_POP(&head, list_entry);
 	free(s3);
-	LIST_POP(&head, list_entry);
-	LIST_POP(&head, list_entry);
-
 	puts("---------------");
+	
 	for(np = head.l_head; np != NULL; np = np->list_entry.next) {
 		printf("Value: %f\n", np->value);
 		np->list_entry.next == NULL
 			? puts("Last element")
-			: printf("Address: %p\n", np->list_entry.next);
+			: printf("Address: 0x%lX\n", (intptr_t)np->list_entry.next);
 	}
 
 	/* From here, valgrind complains. And that's unacceptable. */
